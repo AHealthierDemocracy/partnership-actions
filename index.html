@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vot-ER Partner Hub</title>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-dark:   #083A51;
+      --blue-mid:    #106A94;
+      --blue-sky:    #38B1EA;
+      --blue-light:  #E6F5FC;
+      --red:         #E64C4C;
+      --red-warm:    #DF3C26;
+      --white:       #FFFFFF;
+      --off-white:   #F8F6F2;
+      --text:        #1A1A1A;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--blue-light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--blue-mid); }
+    a:focus-visible { outline: 3px solid var(--blue-sky); outline-offset: 2px; border-radius: 3px; }
+
+    /* ── Header ──────────────────────────────────────── */
+    header {
+      background-color: var(--blue-dark);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-mark {
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--white);
+    }
+
+    .logo-mark span { color: var(--blue-sky); }
+
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Nav ─────────────────────────────────────────── */
+    nav {
+      background-color: var(--blue-mid);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    nav a {
+      display: block;
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+
+    nav a:hover { background-color: rgba(255,255,255,0.15); }
+
+    /* ── Main layout ─────────────────────────────────── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── Hero / Event Card ───────────────────────────── */
+    .event-hero {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(8,58,81,0.1);
+      margin-bottom: 2.5rem;
+    }
+
+    .event-hero-header {
+      background-color: var(--blue-dark);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+    }
+
+    .event-tag {
+      display: inline-block;
+      background-color: var(--blue-sky);
+      color: var(--blue-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .event-hero-header h1 {
+      font-size: 1.55rem;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      padding: 1.25rem 2rem;
+      background-color: var(--off-white);
+      border-bottom: 1px solid #dde8ef;
+    }
+
+    .event-meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-meta-item .label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--blue-mid);
+    }
+
+    .event-meta-item .value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+    }
+
+    .event-body {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .event-body p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .event-body h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin: 1.25rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
+    }
+
+    .event-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-body li { margin-bottom: 0.35rem; }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--red);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: background 0.15s;
+    }
+
+    .cta-button:hover { background-color: var(--red-warm); color: var(--white); }
+
+    /* ── Section heading ─────────────────────────────── */
+    .section-heading {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--blue-sky);
+    }
+
+    /* ── Tool kit cards ──────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 6px rgba(8,58,81,0.08);
+      border-top: 4px solid var(--blue-sky);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue-mid);
+      text-decoration: none;
+    }
+
+    .card a:hover { text-decoration: underline; }
+
+    /* ── Compliance note ─────────────────────────────── */
+    .notice {
+      background-color: #fff8e6;
+      border-left: 4px solid #e6a817;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .notice strong { color: #7a5400; }
+
+    /* ── Footer ──────────────────────────────────────── */
+    footer {
+      background-color: var(--blue-dark);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    footer a { color: var(--blue-sky); }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 600px) {
+      .event-hero-header h1 { font-size: 1.2rem; }
+      .event-body, .event-meta { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="logo-mark">Vot<span>-ER</span></div>
+      <p>Partner Hub · 2026</p>
+    </div>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="#event">Upcoming Event</a></li>
+      <li><a href="#toolkit">Partner Tool Kit</a></li>
+      <li><a href="#about">About Vot-ER</a></li>
+      <li><a href="mailto:partnership@vot-er.org">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ── Upcoming Event ─────────────────────────────── -->
+    <section id="event" aria-labelledby="event-title">
+
+      <div class="event-hero">
+        <div class="event-hero-header">
+          <div class="event-tag">Upcoming Event</div>
+          <h1 id="event-title">Healthcare Professionals United: Know Your Rights Training for Patient &amp; Staff Protection</h1>
+        </div>
+
+        <div class="event-meta" role="list">
+          <div class="event-meta-item" role="listitem">
+            <span class="label">Date</span>
+            <span class="value">Tuesday, April 7, 2026</span>
+          </div>
+          <div class="event-meta-item" role="listitem">
+            <span class="label">Time</span>
+            <span class="value">7–8 PM ET &nbsp;/&nbsp; 4–5 PM PT</span>
+          </div>
+          <div class="event-meta-item" role="listitem">
+            <span class="label">Format</span>
+            <span class="value">Free &amp; Virtual (Zoom)</span>
+          </div>
+          <div class="event-meta-item" role="listitem">
+            <span class="label">Host</span>
+            <span class="value">Vot-ER, Public Counsel &amp; Vision y Compromiso</span>
+          </div>
+        </div>
+
+        <div class="event-body">
+          <p>ICE enforcement in healthcare settings is driving patients away from care. This training gives healthcare workers the legal grounding and practical tools to protect patient trust and access — right now.</p>
+
+          <h2>What you'll leave with</h2>
+          <ul>
+            <li>A clear understanding of your legal rights if ICE comes to your workplace</li>
+            <li>Concrete steps to prepare your team</li>
+            <li>Tools to share with patients so they feel safer accessing care</li>
+          </ul>
+
+          <p><strong>Can't make it live?</strong> Register anyway — the recording will be sent to all registrants.</p>
+
+          <a class="cta-button" href="https://www.mobilize.us/vot-er/event/902068/" target="_blank" rel="noopener noreferrer">RSVP — It's Free</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Partner Tool Kit ───────────────────────────── -->
+    <section id="toolkit" aria-labelledby="toolkit-heading">
+      <h2 class="section-heading" id="toolkit-heading">Partner Tool Kit</h2>
+
+      <p style="margin-bottom:1.25rem; font-size:0.95rem;">We are excited to be partnering with you. Use these ready-to-send templates to invite your network to the April 7 training. You are passing along a resource — not hosting the event.</p>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Email Template</h3>
+          <p>~850 characters. Customizable subject line and opening. Add your RSVP link and sign-off.</p>
+          <a href="2026/events/april-7-know-your-rights/email-template.md">View template →</a>
+        </div>
+
+        <div class="card">
+          <h3>SMS / Text Template</h3>
+          <p>~215 characters (under 2 segments). Use a shortened URL and add opt-out language before sending.</p>
+          <a href="2026/events/april-7-know-your-rights/sms-template.md">View template →</a>
+        </div>
+
+        <div class="card">
+          <h3>Event Details</h3>
+          <p>Full event information, learning objectives, and audience description for your internal use.</p>
+          <a href="2026/events/april-7-know-your-rights/event-details.md">View details →</a>
+        </div>
+
+        <div class="card">
+          <h3>Legal &amp; Compliance Notes</h3>
+          <p>CAN-SPAM and TCPA flags reviewed for both templates. Consult your legal counsel before sending.</p>
+          <a href="2026/events/april-7-know-your-rights/compliance-notes.md">View notes →</a>
+        </div>
+
+      </div>
+
+      <div class="notice">
+        <strong>Before you send:</strong> Add your organization's physical mailing address to email footers (CAN-SPAM), confirm your list has opt-in consent for SMS (TCPA), and insert the correct RSVP link. Questions? Reach us at <a href="mailto:partnership@vot-er.org">partnership@vot-er.org</a>.
+      </div>
+    </section>
+
+    <!-- ── About ──────────────────────────────────────── -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 class="section-heading" id="about-heading">About Vot-ER</h2>
+      <p style="font-size:0.95rem; max-width:680px;">Vot-ER is a nonpartisan, nonprofit integrating civic engagement into healthcare settings through its tools, programs, and coaching. By focusing on voting as a social determinant of health, Vot-ER helps patients and healthcare professionals use their voices at the ballot box to address the underlying factors driving health inequities.</p>
+      <p style="margin-top:0.75rem; font-size:0.9rem;"><strong>Let's create a healthier democracy.</strong> &nbsp;·&nbsp; <a href="https://vot-er.org" target="_blank" rel="noopener noreferrer">vot-er.org</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Questions? <a href="mailto:partnership@vot-er.org">partnership@vot-er.org</a> &nbsp;·&nbsp; <a href="https://vot-er.org" target="_blank" rel="noopener noreferrer">vot-er.org</a></p>
+    <p style="margin-top:0.4rem; font-size:0.75rem; opacity:0.6;">Vot-ER is a nonpartisan, nonprofit 501(c)(3) organization. This tool kit is for partner use only.</p>
+  </footer>
+
+</body>
+</html>
