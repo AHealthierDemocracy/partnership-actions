@@ -381,22 +381,32 @@
 
           <p><strong>Can't make it live?</strong> Register anyway — the recording will be sent to all registrants.</p>
 
-          <a class="cta-button" href="https://www.mobilize.us/vot-er/event/902068/" target="_blank" rel="noopener noreferrer">RSVP — It's Free</a>
+          <a class="cta-button" href="#event" id="rsvp-cta">RSVP via Zoom — It's Free ↓</a>
         </div>
       </div>
 
-      <!-- RSVP Embed -->
+      <!-- RSVP Embed — Zoom Registration -->
       <div class="rsvp-section">
         <div class="rsvp-section-header">
-          <h2>RSVP — Register Here</h2>
-          <a href="https://www.mobilize.us/vot-er/event/902068/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+          <h2>Register via Zoom</h2>
+          <a href="#" target="_blank" rel="noopener noreferrer" id="zoom-open-link">Open in new tab ↗</a>
         </div>
         <div class="rsvp-iframe-wrap">
+          <!-- Replace [ZOOM_REGISTRATION_LINK] with the actual Zoom registration URL -->
+          <div id="zoom-placeholder" style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:300px; background:#f8f6f2; gap:1rem; padding:2rem; text-align:center;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#2D8CFF"/><path d="M8 17a3 3 0 013-3h18a3 3 0 013 3v14a3 3 0 01-3 3H11a3 3 0 01-3-3V17z" fill="#fff"/><path d="M32 21l8-5v16l-8-5V21z" fill="#fff"/></svg>
+            <p style="font-size:1rem; font-weight:700; color:#083A51;">Zoom Registration Embed</p>
+            <p style="font-size:0.88rem; color:#555; max-width:400px;">Replace the placeholder URL in <code>index.html</code> with the Zoom webinar or meeting registration link to activate this embed.</p>
+            <a class="cta-button" href="#" style="margin-top:0.25rem; font-size:0.9rem;" id="zoom-cta-btn">[ZOOM REGISTRATION LINK]</a>
+          </div>
           <iframe
-            src="https://www.mobilize.us/vot-er/event/902068/?iframe=true"
-            title="RSVP for Know Your Rights Training — April 7, 2026"
+            id="zoom-iframe"
+            src="about:blank"
+            data-src="[ZOOM_REGISTRATION_LINK]"
+            title="Register for Know Your Rights Training — April 7, 2026"
             allowtransparency="true"
             loading="lazy"
+            style="display:none;"
           ></iframe>
         </div>
       </div>
@@ -435,6 +445,12 @@
           <a href="2026/events/april-7-know-your-rights/compliance-notes.md">View notes →</a>
         </div>
 
+        <div class="card" style="border-top-color: var(--red);">
+          <h3>Social Media Sharing</h3>
+          <p>Ready-to-post copy for Twitter/X, LinkedIn, Facebook, and Instagram — with character counts and one-click copy.</p>
+          <a href="2026/events/april-7-know-your-rights/social-sharing.html">View social copy →</a>
+        </div>
+
       </div>
 
       <div class="notice">
@@ -455,6 +471,25 @@
     <p>Questions? <a href="mailto:partnership@vot-er.org">partnership@vot-er.org</a> &nbsp;·&nbsp; <a href="https://vot-er.org" target="_blank" rel="noopener noreferrer">vot-er.org</a></p>
     <p style="margin-top:0.4rem; font-size:0.75rem; opacity:0.6;">Vot-ER is a nonpartisan, nonprofit 501(c)(3) organization. This tool kit is for partner use only.</p>
   </footer>
+
+<script>
+  // Zoom registration — swap [ZOOM_REGISTRATION_LINK] with the real URL when ready.
+  // Example: const zoomURL = "https://us02web.zoom.us/webinar/register/XXXXXXXXXX";
+  const zoomURL = "[ZOOM_REGISTRATION_LINK]";
+
+  if (zoomURL && !zoomURL.includes('[')) {
+    const iframe = document.getElementById('zoom-iframe');
+    const placeholder = document.getElementById('zoom-placeholder');
+    const openLink = document.getElementById('zoom-open-link');
+    iframe.src = zoomURL;
+    iframe.style.display = 'block';
+    placeholder.style.display = 'none';
+    openLink.href = zoomURL;
+    document.getElementById('rsvp-cta').href = zoomURL;
+    document.getElementById('rsvp-cta').target = '_blank';
+    document.getElementById('rsvp-cta').rel = 'noopener noreferrer';
+  }
+</script>
 
 </body>
 </html>
