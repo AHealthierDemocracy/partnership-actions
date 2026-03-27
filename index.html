@@ -49,6 +49,14 @@
 
     .logo-mark span { color: var(--blue-sky); }
 
+    .header-logo {
+      height: 48px;
+      width: auto;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 4px 8px;
+    }
+
     header p {
       font-size: 0.9rem;
       opacity: 0.8;
@@ -239,6 +247,49 @@
 
     .card a:hover { text-decoration: underline; }
 
+    /* ── RSVP iframe ─────────────────────────────────── */
+    .rsvp-section {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(8,58,81,0.1);
+      margin-bottom: 2.5rem;
+    }
+
+    .rsvp-section-header {
+      background-color: var(--blue-mid);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .rsvp-section-header h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .rsvp-section-header a {
+      color: var(--blue-sky);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .rsvp-iframe-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .rsvp-iframe-wrap iframe {
+      width: 100%;
+      border: none;
+      display: block;
+      min-height: 520px;
+    }
+
     /* ── Compliance note ─────────────────────────────── */
     .notice {
       background-color: #fff8e6;
@@ -272,6 +323,7 @@
 <body>
 
   <header>
+    <img src="logo.png" alt="Vot-ER" class="header-logo">
     <div>
       <div class="logo-mark">Vot<span>-ER</span></div>
       <p>Partner Hub · 2026</p>
@@ -333,6 +385,22 @@
         </div>
       </div>
 
+      <!-- RSVP Embed -->
+      <div class="rsvp-section">
+        <div class="rsvp-section-header">
+          <h2>RSVP — Register Here</h2>
+          <a href="https://www.mobilize.us/vot-er/event/902068/" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+        </div>
+        <div class="rsvp-iframe-wrap">
+          <iframe
+            src="https://www.mobilize.us/vot-er/event/902068/?iframe=true"
+            title="RSVP for Know Your Rights Training — April 7, 2026"
+            allowtransparency="true"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
     </section>
 
     <!-- ── Partner Tool Kit ───────────────────────────── -->
@@ -346,13 +414,13 @@
         <div class="card">
           <h3>Email Template</h3>
           <p>~850 characters. Customizable subject line and opening. Add your RSVP link and sign-off.</p>
-          <a href="2026/events/april-7-know-your-rights/email-template.md">View template →</a>
+          <a href="2026/events/april-7-know-your-rights/email-template.html">View template →</a>
         </div>
 
         <div class="card">
           <h3>SMS / Text Template</h3>
           <p>~215 characters (under 2 segments). Use a shortened URL and add opt-out language before sending.</p>
-          <a href="2026/events/april-7-know-your-rights/sms-template.md">View template →</a>
+          <a href="2026/events/april-7-know-your-rights/sms-template.html">View template →</a>
         </div>
 
         <div class="card">
